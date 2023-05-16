@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-16 15:00+0500\n"
-"PO-Revision-Date: 2023-05-16 14:43+0500\n"
+"POT-Creation-Date: 2023-05-16 15:52+0500\n"
+"PO-Revision-Date: 2023-05-16 15:16+0500\n"
 "Last-Translator:   <>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -19,28 +19,40 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Translated-Using: django-rosetta 0.9.9\n"
 
-#: .\apps\rosetta_example\models.py:7
+#: .\apps\model_translation\models.py:7 .\apps\rosetta_example\models.py:7
 msgid "word"
-msgstr ""
+msgstr "word"
 
-#: .\apps\rosetta_example\models.py:8
+#: .\apps\model_translation\models.py:8 .\apps\rosetta_example\models.py:8
 msgid "definition"
+msgstr "definition"
+
+#: .\apps\model_translation\models.py:16
+msgid "Modeltranslation_words"
 msgstr ""
 
-#: .\apps\rosetta_example\models.py:16
-msgid "Rossetta_words"
-msgstr ""
-
-#: .\apps\rosetta_example\views.py:13
+#: .\apps\model_translation\views.py:12 .\apps\rosetta_example\views.py:13
 msgid "hello"
 msgstr "hello_world"
 
-#: .\core\settings\base.py:222
+#: .\apps\model_translation\views.py:13
+msgid "Welcome to my app"
+msgstr "Welcome to my app"
+
+#: .\apps\rosetta_example\models.py:16
+msgid "Rossetta_words"
+msgstr "Rossetta_words"
+
+#: .\core\settings\base.py:223
 msgid "English"
 msgstr ""
 
-#: .\core\settings\base.py:223
+#: .\core\settings\base.py:224
 msgid "Uzbek"
+msgstr ""
+
+#: .\core\settings\base.py:225
+msgid "Russian"
 msgstr ""
 
 #: .\venv\Lib\site-packages\captcha\fields.py:20
@@ -1249,4 +1261,8 @@ msgstr ""
 
 #: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:249
 msgid "Connect, get help, or contribute"
+msgstr ""
+
+#: .\venv\Lib\site-packages\modeltranslation\widgets.py:26
+msgid "None"
 msgstr ""

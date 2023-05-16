@@ -8,52 +8,54 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-16 15:52+0500\n"
-"PO-Revision-Date: 2023-05-16 15:17+0500\n"
+"POT-Creation-Date: 2023-05-16 16:00+0500\n"
+"PO-Revision-Date: 2023-05-16 15:57+0500\n"
 "Last-Translator:   <>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
 "X-Translated-Using: django-rosetta 0.9.9\n"
 
 #: .\apps\model_translation\models.py:7 .\apps\rosetta_example\models.py:7
 msgid "word"
-msgstr "so'z"
+msgstr "слово"
 
 #: .\apps\model_translation\models.py:8 .\apps\rosetta_example\models.py:8
 msgid "definition"
-msgstr "ta'rifi"
+msgstr "определение"
 
 #: .\apps\model_translation\models.py:16
 msgid "Modeltranslation_words"
-msgstr ""
+msgstr "Modeltranslation_слово"
 
 #: .\apps\model_translation\views.py:12 .\apps\rosetta_example\views.py:13
 msgid "hello"
-msgstr "salom_dunyo"
+msgstr "привет"
 
 #: .\apps\model_translation\views.py:13
 msgid "Welcome to my app"
-msgstr "Mening  ilovamga xush kelibsiz"
+msgstr "Добро пожаловать в мое приложение"
 
 #: .\apps\rosetta_example\models.py:16
 msgid "Rossetta_words"
-msgstr "Rosetta lug'ati"
+msgstr "Россетта_слова"
 
 #: .\core\settings\base.py:223
 msgid "English"
-msgstr ""
+msgstr "Английский"
 
 #: .\core\settings\base.py:224
 msgid "Uzbek"
-msgstr ""
+msgstr "узбекский"
 
 #: .\core\settings\base.py:225
 msgid "Russian"
-msgstr ""
+msgstr "Русский"
 
 #: .\venv\Lib\site-packages\captcha\fields.py:20
 #: .\venv\Lib\site-packages\captcha\fields.py:21

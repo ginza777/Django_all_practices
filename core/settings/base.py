@@ -40,8 +40,9 @@ ALLOWED_HOSTS = ['localhost', '127.0.0.1:8000', '127.0.0.1', 'http://127.0.0.1:8
 # Application definition
 DJANGO_APPS = [
     "jazzmin",
-    "django.contrib.admin",
     'rosetta',
+    'modeltranslation',
+    "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
@@ -59,6 +60,7 @@ CUSTOM_APPS = [
     "apps.session_verification",
     "apps.rosetta_example",
     'apps.model_translation',
+
 ]
 
 THIRD_PARTY_APPS = [
@@ -69,6 +71,7 @@ THIRD_PARTY_APPS = [
     'rest_framework.authtoken',
     "phonenumber_field",
     'django_filters',
+
 
 ]
 
@@ -219,7 +222,11 @@ AUTH_USER_MODEL = "authentication.CustomUser"
 LANGUAGES = (
     ('en', _('English')),
     ('uz', _('Uzbek')),
+    ('ru', _('Russian')),
 )
 LOCALE_PATHS = [
     os.path.join(BASE_DIR, 'locale'),
 ]
+#modeltranslation settings
+MODELTRANSLATION_DEFAULT_LANGUAGE = 'en'
+MODELTRANSLATION_LANGUAGES = ('en', 'uz', 'ru')

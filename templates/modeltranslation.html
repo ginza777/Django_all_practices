@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <style>
         table {
@@ -21,7 +21,11 @@
     <title>Userlist</title>
 </head>
 <body>
-<h1>{{ data }}</h1>
+<a href="{% url 'set-language' 'en' %}">EN</a>
+<a href="{% url 'set-language' 'uz' %}">UZ</a>
+<a href="{% url 'set-language' 'ru' %}">RU</a>
+
+
 <h2>Words</h2>
 
 <table>
@@ -34,7 +38,7 @@
 
 
     <script>
-        fetch('http://127.0.0.1:8000/rosetta_example/words/')
+        fetch('http://127.0.0.1:8000/model_translation/wordlist/')
             .then(response => response.json())
             .then(data => {
                 // Ma'lumotlarni qayta ishlash
@@ -66,6 +70,25 @@
                 console.error('Xatolik yuz berdi:', error);
             });
     </script>
+</table>
+<h1>Django home simple</h1>
+<table>
+    <tr>
+        <th>id</th>
+        <th>word</th>
+        <th>definition</th>
+
+    </tr>
+{% if home_data %}
+{% for word in home_data %}
+    <tr>
+        <td>{{ word.id}}</td>
+        <td>{{ word.word }}</td>
+        <td>{{ word.definition}}</td>
+    </tr>
+        {% endfor %}
+{% endif %}
+
 </table>
 </body>
 </html>
