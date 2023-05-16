@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html  lang="en">
+<head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+    <title>Userlist</title>
+</head>
+<body>
+
+<h2>HTML Table</h2>
+
+<table>
+  <tr>
+    <th>id</th>
+    <th>username</th>
+      <th>email</th>
+    <th>privaligies</th>
+  </tr>
+
+
+    <script>
+      fetch('http://127.0.0.1:8000/session_verification/users/')
+        .then(response => response.json())
+        .then(data => {
+          // Ma'lumotlarni qayta ishlash
+          console.log(data);
+
+
+          // Malumotlar ustunlarini HTML jadvalida qo'shish
+          data.forEach(user => {
+            const tableRow = document.createElement('tr');
+
+            const idCell = document.createElement('td');
+            idCell.textContent = user.id;
+            tableRow.appendChild(idCell);
+
+            const usernameCell = document.createElement('td');
+            usernameCell.textContent = user.username;
+            tableRow.appendChild(usernameCell);
+
+            const emailCell = document.createElement('td');
+            emailCell.textContent = user.email;
+            tableRow.appendChild(emailCell);
+
+            const privilegesCell = document.createElement('td');
+            privilegesCell.textContent = user.privaligies;
+            tableRow.appendChild(privilegesCell);
+
+            document.querySelector('table').appendChild(tableRow);
+          });
+        })
+        .catch(error => {
+          console.error('Xatolik yuz berdi:', error);
+        });
+    </script>
+</table>
+</body>
+</html>
+

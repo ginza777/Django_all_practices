@@ -30,7 +30,7 @@ class CustomUserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = CustomUser
-        fields = ['username', 'email', 'phone', 'password', 'is_active']
+        fields = ['username', 'email', 'phone', 'password']
 
     def create(self, validated_data):
         # Retrieve the password from validated_data

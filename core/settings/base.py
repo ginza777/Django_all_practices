@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 import os
 from pathlib import Path
+from django.utils.translation import gettext_lazy as _
 
 import environ
 
@@ -34,12 +35,13 @@ SECRET_KEY = env.str("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool("DEBUG")
 
-ALLOWED_HOSTS = ['localhost','127.0.0.1:8000','127.0.0.1','http://127.0.0.1:8000/']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1:8000', '127.0.0.1', 'http://127.0.0.1:8000/']
 
 # Application definition
 DJANGO_APPS = [
     "jazzmin",
     "django.contrib.admin",
+    'rosetta',
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
@@ -54,6 +56,9 @@ CUSTOM_APPS = [
     "apps.app_captcha",
     "apps.backendfilter",
     "apps.authentication",
+    "apps.session_verification",
+    "apps.rosetta_example",
+    'apps.model_translation',
 ]
 
 THIRD_PARTY_APPS = [
@@ -64,6 +69,7 @@ THIRD_PARTY_APPS = [
     'rest_framework.authtoken',
     "phonenumber_field",
     'django_filters',
+
 ]
 
 REST_FRAMEWORK = {
@@ -93,6 +99,7 @@ INSTALLED_APPS = DJANGO_APPS + CUSTOM_APPS + THIRD_PARTY_APPS
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "django.middleware.locale.LocaleMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "corsheaders.middleware.CorsMiddleware",
@@ -101,6 +108,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+
 ]
 
 ROOT_URLCONF = "core.urls"
@@ -200,12 +208,18 @@ CELERY_TIMEZONE = "Asia/Tashkent"
 CELERY_TASK_TRACK_STARTED = True
 CELERY_TASK_TIME_LIMIT = 30 * 60
 
-
-#RECAPTCHA
+# RECAPTCHA
 
 RECAPTCHA_PUBLIC_KEY = "6LexHeQlAAAAAOwhsF6ueDmzTvga2Y8LH7_yFDHt"
 RECAPTCHA_PRIVATE_KEY = "6LexHeQlAAAAAMVP7YkkuU4g8lHCzKJyYaqkMIFW"
 RECAPTCHA_REQUIRED_SCORE = 0.85
 
+AUTH_USER_MODEL = "authentication.CustomUser"
 
-AUTH_USER_MODEL ="authentication.CustomUser"
+LANGUAGES = (
+    ('en', _('English')),
+    ('uz', _('Uzbek')),
+)
+LOCALE_PATHS = [
+    os.path.join(BASE_DIR, 'locale'),
+]

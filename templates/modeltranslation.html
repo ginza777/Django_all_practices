@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+    <title>Userlist</title>
+</head>
+<body>
+<h1>{{ data }}</h1>
+<h2>Words</h2>
+
+<table>
+    <tr>
+        <th>id</th>
+        <th>word</th>
+        <th>definition</th>
+
+    </tr>
+
+
+    <script>
+        fetch('http://127.0.0.1:8000/rosetta_example/words/')
+            .then(response => response.json())
+            .then(data => {
+                // Ma'lumotlarni qayta ishlash
+                console.log(data);
+
+
+
+                // Malumotlar ustunlarini HTML jadvalida qo'shish
+                data.forEach(words => {
+                    const tableRow = document.createElement('tr');
+
+                    const idCell = document.createElement('td');
+                    idCell.textContent = words.id;
+                    tableRow.appendChild(idCell);
+
+                    const wordCell = document.createElement('td');
+                    wordCell.textContent = words.word;
+                    tableRow.appendChild(wordCell);
+
+                    const definitionCell = document.createElement('td');
+                    definitionCell.textContent = words.definition;
+                    tableRow.appendChild(definitionCell);
+
+
+                    document.querySelector('table').appendChild(tableRow);
+                });
+            })
+            .catch(error => {
+                console.error('Xatolik yuz berdi:', error);
+            });
+    </script>
+</table>
+</body>
+</html>
+
