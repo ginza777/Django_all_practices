@@ -2,9 +2,10 @@ from django.contrib import admin
 from modeltranslation.admin import TranslationAdmin
 from apps.model_translation.models import Words
 
+
 @admin.register(Words)
 class WordsAdmin(TranslationAdmin):
-    list_display = ('word','definition')
+    list_display = ('word', 'definition')
 
     class Media:
         js = (

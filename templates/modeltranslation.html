@@ -38,12 +38,17 @@
 
 
     <script>
-        fetch('http://127.0.0.1:8000/model_translation/wordlist/')
+        fetch('http://127.0.0.1:8000/model_translation/wordlist/', {
+            headers: {
+                'Accept-Language': 'uz',
+                "Content-Type": "application/json; charset=utf-8",
+                "Content-Language": "uz",
+            }
+        })
             .then(response => response.json())
             .then(data => {
                 // Ma'lumotlarni qayta ishlash
                 console.log(data);
-
 
 
                 // Malumotlar ustunlarini HTML jadvalida qo'shish
@@ -79,15 +84,15 @@
         <th>definition</th>
 
     </tr>
-{% if home_data %}
-{% for word in home_data %}
-    <tr>
-        <td>{{ word.id}}</td>
-        <td>{{ word.word }}</td>
-        <td>{{ word.definition}}</td>
-    </tr>
+    {% if home_data %}
+        {% for word in home_data %}
+            <tr>
+                <td>{{ word.id }}</td>
+                <td>{{ word.word }}</td>
+                <td>{{ word.definition }}</td>
+            </tr>
         {% endfor %}
-{% endif %}
+    {% endif %}
 
 </table>
 </body>

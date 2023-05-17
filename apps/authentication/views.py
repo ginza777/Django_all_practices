@@ -38,9 +38,9 @@ class DeleteUser(APIView):
         user.is_active = False
         user.is_staff = False
         user.is_superuser = False
-        user.apps.backendfilterapps_set = ['DjangoModelPermissionsOrAnonReadOnly']
         user.save()
         comment = "User deleted"
+        paginagtion_class = None
 
         return Response(status=status.HTTP_200_OK)
 

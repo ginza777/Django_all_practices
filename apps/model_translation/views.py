@@ -4,41 +4,38 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.utils.translation import gettext_lazy as _
 from apps.model_translation.models import Words
+from django.utils.translation import activate
+from modeltranslation.utils import get_language
+from rest_framework import generics
 
 
 # Create your views here.
 
 def Home(request):
-    trans=_('hello')
-    output=_("Welcome to my app")
+    trans = _('hello')
+    output = _("Welcome to my app")
     print(output)
-    list=[]
-    data={}
-    words=Words.objects.all()
+    list = []
+
+    words = Words.objects.all()
     for word in words:
-        data['word']=word.word
-        data['definition']=word.definition
+        data = {}
+        data['word'] = word.word
+        data['definition'] = word.definition
         list.append(data)
+    return render(request=request, template_name='modeltranslation.html', context={'home_data': list})
 
-
-
-    return render(request=request,template_name= 'modeltranslation.html',context={'home_data':list})
 
 class RosettaListSerializers(serializers.ModelSerializer):
-
-
     class Meta:
         model = Words
-        fields ='__all__'
+        fields = [
+            'word',
+            'definition'
+        ]
 
-class WordList(APIView ):
+
+class WordList(generics.ListAPIView):
     serializer_class = RosettaListSerializers
     queryset = Words.objects.all().order_by('id')
-
-    def get(self,request):
-        wordlist=Words.objects.all()
-        serializer=self.serializer_class(wordlist,many=True)
-        return Response(serializer.data)
-
-
-
+    pagination_class = None

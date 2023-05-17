@@ -1,8 +1,7 @@
 <!DOCTYPE html>
-{% load static %}
-
-<html>
+<html lang="ru">
 <head>
+    {% load static %}
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
@@ -29,10 +28,16 @@
         <label for="password"><b>Password</b></label>
         <input type="password" placeholder="Enter Password" name="password" id="password" required>
 
-        {{ form.captcha}}
-        {% for error in form.captcha.errors%}
-        <p>{{error}}</p>
+        {{ form.captcha }}
+        {% for error in form.captcha.errors %}
+            <p>{{ error }}</p>
         {% endfor %}
+    {% if messages %}
+        {% for message in messages %}
+            <p style="color: red"> {{ message }}</p>
+        {% endfor %}
+
+    {% endif %}
         <input type="submit" value="Submit">
         <label>
             <input type="checkbox" checked="checked" name="remember"> Remember me

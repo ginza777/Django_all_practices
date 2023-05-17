@@ -60,6 +60,7 @@ CUSTOM_APPS = [
     "apps.session_verification",
     "apps.rosetta_example",
     'apps.model_translation',
+    'apps.django_signals'
 
 ]
 
@@ -71,7 +72,7 @@ THIRD_PARTY_APPS = [
     'rest_framework.authtoken',
     "phonenumber_field",
     'django_filters',
-
+    "auditlog",
 
 ]
 
@@ -101,8 +102,9 @@ REST_FRAMEWORK = {
 INSTALLED_APPS = DJANGO_APPS + CUSTOM_APPS + THIRD_PARTY_APPS
 
 MIDDLEWARE = [
-    "django.middleware.security.SecurityMiddleware",
+    "auditlog.middleware.AuditlogMiddleware",
     "django.middleware.locale.LocaleMiddleware",
+    "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "corsheaders.middleware.CorsMiddleware",
@@ -113,6 +115,8 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 
 ]
+AUDITLOG_INCLUDE_ALL_MODELS=True
+
 
 ROOT_URLCONF = "core.urls"
 
@@ -182,7 +186,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = "static/"
-STATIC_ROOT = BASE_DIR / "static"
+STATIC_ROOT = (BASE_DIR / "static")
 STATICFILES_DIRS = (BASE_DIR / "staticfiles",)
 
 MEDIA_URL = "media/"
@@ -224,9 +228,14 @@ LANGUAGES = (
     ('uz', _('Uzbek')),
     ('ru', _('Russian')),
 )
+
+LANGUAGE_FROM_REQUEST = True
 LOCALE_PATHS = [
     os.path.join(BASE_DIR, 'locale'),
 ]
-#modeltranslation settings
+# modeltranslation settings
 MODELTRANSLATION_DEFAULT_LANGUAGE = 'en'
 MODELTRANSLATION_LANGUAGES = ('en', 'uz', 'ru')
+
+#login redirect url
+LOGIN_REDIRECT_URL = 'http://127.0.0.1:8000/en/swagger/'

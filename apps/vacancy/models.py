@@ -40,4 +40,4 @@ class Resume(models.Model):
     resume = models.FileField(upload_to='resume', null=True, blank=True)
 
     def __str__(self):
-        return self.name
+        return self.name.username
