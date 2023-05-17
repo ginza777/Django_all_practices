@@ -60,7 +60,7 @@ CUSTOM_APPS = [
     "apps.session_verification",
     "apps.rosetta_example",
     'apps.model_translation',
-    'apps.django_signals'
+    'apps.djangosignals'
 
 ]
 

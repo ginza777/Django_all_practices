@@ -44,7 +44,7 @@ urlpatterns = [
     path("session_verification/", include("apps.session_verification.urls")),
     path("rosetta_example/", include("apps.rosetta_example.urls")),
     path("model_translation/", include("apps.model_translation.urls")),
-    path("django_signals/", include("apps.django_signals.urls")),
+    path("djangosignals/", include("apps.djangosignals.urls")),
 
 ]
 # swagger url settings

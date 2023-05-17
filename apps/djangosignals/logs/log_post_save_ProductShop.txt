@@ -1,0 +1,17 @@
+The product 'olma' was created.
+Sender: <class 'apps.djangosignals.models.ProductShop'>
+Instance ID: 3
+Fields:
+id: 3
+name: olma
+image: images/cgku0hfg49devoacfa2g_sMnZXsB.jpg
+short_description: product
+description: product
+price: 400
+created_at: 2023-05-17 12:08:56.087298+00:00
+updated_at: 2023-05-17 12:08:56.088297+00:00
+product_code: 2568449798
+count_of_product: 1
+sold_count: 6
+discount: 90
+shop: megezin

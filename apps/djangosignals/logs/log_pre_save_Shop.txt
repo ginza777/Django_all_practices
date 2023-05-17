@@ -1,0 +1,11 @@
+The product 'megezin' was created.
+Sender: <class 'apps.djangosignals.models.Shop'>
+Instance ID: None
+Fields:
+id: None
+shop_assistant: admin
+name: megezin
+description: shop
+created_at: None
+updated_at: None
+document: cgktvdvhj8j9g69bq4t0.jpg
