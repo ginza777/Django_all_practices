@@ -61,7 +61,8 @@ CUSTOM_APPS = [
     "apps.rosetta_example",
     'apps.model_translation',
     'apps.djangosignals',
-    'apps.twillo',
+    'apps.random_sms_verification',
+    'apps.twillo'
 
 ]
 

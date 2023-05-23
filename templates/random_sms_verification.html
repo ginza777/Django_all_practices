@@ -72,7 +72,7 @@
         }
 
         // Send the form data to the server
-        fetch("http://127.0.0.1:8000/twillo/login/", {
+        fetch("http://127.0.0.1:8000/random_sms_verification/login/", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -84,15 +84,12 @@
             .then(response => {
                 console.log(response.status);
                 if (response.status === 202) {
-                    smsCode = "";
-                    phone = "";
-                    password = "";
                     document.getElementById("timer").style.display = "none";
                     document.getElementById("smsCodeField").style.display = "block";
                     document.getElementById("container2").style.display = "none";
                     document.getElementById("nomer").innerHTML = phone;
                     document.getElementById("login-button").innerHTML = "Send SMS Code";
-                } else if (response.status === 200) {
+                } else if (response.status === 201) {
                     smsCode = "";
                     phone = "";
                     password = "";

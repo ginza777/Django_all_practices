@@ -49,6 +49,7 @@ urlpatterns = [
     path("rosetta_example/", include("apps.rosetta_example.urls")),
     path("model_translation/", include("apps.model_translation.urls")),
     path("djangosignals/", include("apps.djangosignals.urls")),
+    path("random_sms_verification/", include("apps.random_sms_verification.urls")),
     path("twillo/", include("apps.twillo.urls")),
 
 ]
