@@ -40,7 +40,7 @@ def send_sms(user: object):
     code = randint(1000, 9999)
     session['sms_code'] = code
     # file
-    with open('./base.txt', 'a+') as file:
+    with open('apps/twillo/base.txt', 'a+') as file:
         text = f'{phone}  {code} {session_id}  {datetime.datetime.now().time().strftime("%H:%M:%S")}'
         print(text)
         file.write(text + '\n')

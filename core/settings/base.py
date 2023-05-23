@@ -62,7 +62,8 @@ CUSTOM_APPS = [
     'apps.model_translation',
     'apps.djangosignals',
     'apps.random_sms_verification',
-    'apps.twillo'
+    'apps.twillo',
+    'apps.BeautifulSoup',
 
 ]
 

@@ -36,7 +36,7 @@ from django.conf import settings
 #         response = HttpResponseRedirect("/")
 #     return response
 
-
+#apps
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("api-auth/", include("rest_framework.urls")),
@@ -51,6 +51,9 @@ urlpatterns = [
     path("djangosignals/", include("apps.djangosignals.urls")),
     path("random_sms_verification/", include("apps.random_sms_verification.urls")),
     path("twillo/", include("apps.twillo.urls")),
+    path("beautifulSoup/", include("apps.BeautifulSoup.urls")),
+    path("socialauth/", include("apps.socialauth.urls")),
+
 
 ]
 # swagger url settings
