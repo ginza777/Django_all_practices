@@ -64,6 +64,7 @@ CUSTOM_APPS = [
     'apps.random_sms_verification',
     'apps.twillo',
     'apps.BeautifulSoup',
+    'apps.socialauth',
 
 ]
 
