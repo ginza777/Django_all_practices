@@ -1,5 +1,3 @@
-import uuid
-
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.utils import timezone
@@ -25,15 +23,11 @@ class CustomUser(AbstractUser):
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
     date_joined = models.DateTimeField(default=timezone.now)
-    phone = PhoneNumberField( blank=True, null=True)
+    phone = PhoneNumberField(blank=True, null=True, unique=True)
     privaligies = models.CharField(max_length=150, choices=Choice.choices, default=Choice.customer)
 
-
-
-
-
-    USERNAME_FIELD = 'username'
-    REQUIRED_FIELDS = ['email']
+    USERNAME_FIELD = 'phone'
+    REQUIRED_FIELDS = ['username']
 
     class Meta:
         verbose_name_plural = 'CustomUser'
@@ -41,5 +35,3 @@ class CustomUser(AbstractUser):
 
     def __str__(self):
         return self.username
-
-

@@ -47,7 +47,7 @@ class ProductShop(models.Model):
         return self.name
 
 
-class Shop_assistant(models.Model):
+class ShopAssistant(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     position = models.CharField(max_length=255, default='shop_assistant')
 
@@ -56,11 +56,11 @@ class Shop_assistant(models.Model):
         verbose_name_plural = 'Shop_assistant'
 
     def __str__(self):
-        return f"{self.user.username}"
+        return f"{self.user}"
 
 
 class Shop(models.Model):
-    shop_assistant = models.ForeignKey(Shop_assistant, on_delete=models.CASCADE)
+    shop_assistant = models.ForeignKey(ShopAssistant, on_delete=models.CASCADE)
     name = models.CharField(max_length=255, default='shop')
     description = models.TextField(default='shop')
     created_at = models.DateTimeField(auto_now_add=True)
@@ -77,9 +77,11 @@ class Shop(models.Model):
 
 class Category(models.Model):
     name = models.CharField(max_length=255, default='category')
+
     class Meta:
         db_table = 'categories'
         verbose_name_plural = 'Categories'
+
     def __str__(self):
         return self.name
 
@@ -103,83 +105,86 @@ def logwriter(sender, instance, method: str):
                    f"Instance ID: {instance.pk}\n" \
                    f"Fields:\n{fields_text}"
             file.write(text + '\n')
-
-
-
     except Exception as e:
         print(f"An error occurred while writing to the file: {e}")
 
+
 # signals
 @receiver(pre_save, sender=ProductShop)
-def product_created(sender, instance, **kwargs):
+def product_created(sender, instance,**kwargs):
     logwriter(sender, instance, 'pre_save_ProductShop')
 
 
 @receiver(post_save, sender=ProductShop)
-def product_created(sender, instance, created, **kwargs):
+def product_created(sender, instance,**kwargs):
     logwriter(sender, instance, 'post_save_ProductShop')
 
 
-
 @receiver(pre_delete, sender=ProductShop)
-def product_deleted(sender, instance, **kwargs):
+def product_deleted(sender, instance,**kwargs):
     logwriter(sender, instance, 'pre_delete_ProductShop')
 
+
 @receiver(post_delete, sender=ProductShop)
-def product_deleted(sender, instance, **kwargs):
+def product_deleted(sender, instance,**kwargs):
     logwriter(sender, instance, 'post_delete_ProductShop')
 
 
-@receiver(pre_save, sender=Shop_assistant)
-def shop_assistant_created(sender, instance, **kwargs):
+@receiver(pre_save, sender=ShopAssistant)
+def shop_assistant_created(sender, instance,**kwargs):
     logwriter(sender, instance, 'pre_save_Shop_assistant')
 
 
-@receiver(post_save, sender=Shop_assistant)
-def shop_assissant_created(sender, instance, created, **kwargs):
-
+@receiver(post_save, sender=ShopAssistant)
+def shop_assissant_created(sender, instance,**kwargs):
     logwriter(sender, instance, 'post_save_Shop_assistant')
 
 
-@receiver(pre_delete, sender=Shop_assistant)
-def shop_assisssant_deleted(sender, instance, **kwargs):
+@receiver(pre_delete, sender=ShopAssistant)
+def shop_assisssant_deleted(sender, instance,**kwargs):
     logwriter(sender, instance, 'pre_delete_Shop_assistant')
 
 
-@receiver(post_delete, sender=Shop_assistant)
-def shop_assisssant_deleted(sender, instance, **kwargs):
+@receiver(post_delete, sender=ShopAssistant)
+def shop_assisssant_deleted(sender, instance,**kwargs):
     logwriter(sender, instance, 'post_delete_Shop_assistant')
 
 
 @receiver(pre_save, sender=Shop)
-def shop_created(sender, instance, **kwargs):
+def shop_created(sender, instance,**kwargs):
     logwriter(sender, instance, 'pre_save_Shop')
 
 
 @receiver(post_save, sender=Shop)
-def shop_created(sender, instance, created, **kwargs):
+def shop_created(sender, instance,**kwargs):
     logwriter(sender, instance, 'post_save_Shop')
 
 
 @receiver(pre_delete, sender=Shop)
-def shop_deleted(sender, instance, **kwargs):
+def shop_deleted(sender, instance,**kwargs):
     logwriter(sender, instance, 'pre_delete_Shop')
 
+
 @receiver(post_delete, sender=Shop)
-def shop_deleted(sender, instance, **kwargs):
+def shop_deleted(sender, instance,**kwargs):
     logwriter(sender, instance, 'post_delete_Shop')
 
+
 @receiver(pre_save, sender=Images)
-def product_description_images_created(sender, instance, **kwargs):
+def product_description_images_created(sender, instance,**kwargs):
     logwriter(sender, instance, 'pre_save_images')
+
+
 @receiver(post_save, sender=Images)
-def product_description_images_created(sender, instance, created, **kwargs):
+def product_description_images_created(sender, instance,**kwargs):
     logwriter(sender, instance, 'post_save_images')
 
 
 @receiver(pre_delete, sender=Images)
-def product_description_images_deleted(sender, instance, **kwargs):
+def product_description_images_deleted(sender, instance,**kwargs):
     logwriter(sender, instance, 'pre_delete_images')
+
+
 @receiver(post_delete, sender=Images)
-def product_description_images_deleted(sender, instance, **kwargs):
+def product_description_images_deleted(sender, instance,**kwargs):
     logwriter(sender, instance, 'post_delete_images')

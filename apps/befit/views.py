@@ -1,7 +1,7 @@
-from django.shortcuts import render
+
 from rest_framework.generics import ListCreateAPIView
 from .serializers import ProductSerializers, ReviewSerializers
-from .models import Clients, Product, Review
+from .models import Product, Review
 
 
 class ProductListView(ListCreateAPIView):

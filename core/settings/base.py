@@ -60,7 +60,8 @@ CUSTOM_APPS = [
     "apps.session_verification",
     "apps.rosetta_example",
     'apps.model_translation',
-    'apps.djangosignals'
+    'apps.djangosignals',
+    'apps.twillo',
 
 ]
 
@@ -103,14 +104,14 @@ REST_FRAMEWORK = {
 INSTALLED_APPS = DJANGO_APPS + CUSTOM_APPS + THIRD_PARTY_APPS
 
 MIDDLEWARE = [
-    #debugging
+    # debugging
     "debug_toolbar.middleware.DebugToolbarMiddleware",
-    #audit
+    # audit
     "auditlog.middleware.AuditlogMiddleware",
-    #model translation
+    # model translation
     "django.middleware.locale.LocaleMiddleware",
     "django.middleware.security.SecurityMiddleware",
-    #whitenoise
+    # whitenoise
     "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "corsheaders.middleware.CorsMiddleware",
@@ -245,7 +246,7 @@ MODELTRANSLATION_LANGUAGES = ('en', 'uz', 'ru')
 # login redirect url
 LOGIN_REDIRECT_URL = 'http://127.0.0.1:8000/en/swagger/'
 
-#debugging
+# debugging
 INTERNAL_IPS = [
     # ...
     "127.0.0.1",

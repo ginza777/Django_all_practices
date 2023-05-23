@@ -3,17 +3,11 @@ from apps.authentication.models import CustomUser
 from .models import Product
 
 
-
-#product
+# product
 class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
         fields = '__all__'
-
-
-
-
-
 
 
 class CustomFilterSerializer(serializers.ModelSerializer):

@@ -44,6 +44,7 @@ class ProductListView(ListAPIView):
 
 
 class CustomFilter(APIView):
+
     def get(self, request, user_id=None):
         print(user_id)
         if user_id:

@@ -1,7 +1,7 @@
 import django_filters
 from apps.authentication.models import CustomUser
 from .models import Product
-from django.db.models import Q
+
 
 class ProductFilterset(django_filters.FilterSet):
     price = django_filters.NumberFilter(lookup_expr='exact')
@@ -10,8 +10,7 @@ class ProductFilterset(django_filters.FilterSet):
 
     class Meta:
         model = Product
-        fields =[ 'price', 'price_min', 'price_max']
-
+        fields = ['price', 'price_min', 'price_max']
 
 
 class CustomFilterset(django_filters.FilterSet):

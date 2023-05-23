@@ -1,0 +1,113 @@
+<html lang="en">
+<head>
+    {% load static %}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Twillo</title>
+</head>
+<body>
+
+<h2>Login Form</h2>
+
+
+{% csrf_token %}
+
+<div class="imgcontainer">
+    <img src="https://www.w3schools.com/howto/img_avatar2.png" alt="Avatar" class="avatar">
+</div>
+
+<div class="container">
+    <div id="container2">
+        <label for="phone"><b>Phone Number</b></label>
+        <input id="phone" type="text" placeholder="Enter Phone Number" name="phone" required>
+
+        <label for="password"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="password" id="password" required>
+    </div>
+    <div id="smsCodeField" style="display: none;">
+        <p><b>SMS kod raqamga yuborildi </b></p>
+        <p id="nomer"></p>
+        <p><b>raqamga yuborildi </b></p>
+        <label for="smsCode"></label>
+        <input type="text" placeholder="Enter SMS Code" name="sms_code" id="smsCode" required>
+
+    </div>
+
+
+    <div id="timer" style="display: none">
+        <p style="color: red"> Somthing error!!!</p>
+    </div>
+    <button type="button" onclick="login()" id="login-button">Login</button>
+    <label>
+        <input type="checkbox" checked="checked" name="remember"> Remember me
+    </label>
+</div>
+
+<div class="container" style="background-color:#f1f1f1">
+    <button type="button">Cancel</button>
+    <span class="psw">Forgot <a href="#">password?</a></span>
+</div>
+
+<script>
+
+
+    // JavaScript code to handle form submission and dynamic display of the SMS code field
+
+    function login() {
+        let phone = document.getElementById("phone").value;
+        let password = document.getElementById("password").value;
+        let smsCode = document.getElementById("smsCode").value;
+
+        if (smsCode.length > 0 || document.getElementById("smsCodeField").style.display === "block") {
+            var formData1 = {
+                phone: phone,
+                password: password,
+                sms_code: smsCode,
+            }
+        } else {
+            var formData2 = {
+                phone: phone,
+                password: password,
+            }
+        }
+
+        // Send the form data to the server
+        fetch("http://127.0.0.1:8000/twillo/login/", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRFToken": "{{ csrf_token }}"
+            },
+            body: JSON.stringify(
+                formData1 || formData2)
+        })
+            .then(response => {
+                console.log(response.status);
+                if (response.status === 202) {
+                    smsCode = "";
+                    phone = "";
+                    password = "";
+                    document.getElementById("timer").style.display = "none";
+                    document.getElementById("smsCodeField").style.display = "block";
+                    document.getElementById("container2").style.display = "none";
+                    document.getElementById("nomer").innerHTML = phone;
+                    document.getElementById("login-button").innerHTML = "Send SMS Code";
+                } else if (response.status === 200) {
+                    smsCode = "";
+                    phone = "";
+                    password = "";
+                    window.location.href = "http://127.0.0.1:8000/swagger/";
+                } else {
+                    document.getElementById("timer").style.display = "block";
+                }
+                // Return the response object as it is
+                return response.json();
+            })
+
+    }
+
+</script>
+
+
+</body>
+</html>

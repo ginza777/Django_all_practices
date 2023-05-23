@@ -1,7 +1,7 @@
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.generics import CreateAPIView
-from rest_framework.permissions import  IsAuthenticated
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
@@ -40,9 +40,7 @@ class DeleteUser(APIView):
         user.is_superuser = False
         user.save()
         comment = "User deleted"
-        paginagtion_class = None
-
-        return Response(status=status.HTTP_200_OK)
+        return Response(status=status.HTTP_200_OK, data={"comment": comment})
 
 
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
