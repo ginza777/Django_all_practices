@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+{% load socialaccount %}
+{% load static %}
 <html lang="en">
 <head>
     <title>Socialauth</title>
@@ -137,7 +139,11 @@
     </style>
 </head>
 <body>
+    {% if user.is_authenticated %}
+    <p>Welcome, {{ user.username }} !</p>
+        <a href="{% url  "logout" %}">Logout</a>
 
+    {% else %}
 <h2>Register page</h2>
 <p>Resize the browser window to see the responsive effect. When the screen is less than 650px wide, make the two columns
     stack on top of each other instead of next to each other.</p>
@@ -157,7 +163,7 @@
                 <a href="#" class="twitter btn">
                     <i class="fa fa-twitter fa-fw"></i> Register with Twitter
                 </a>
-                <a href="#" class="google btn"><i class="fa fa-google fa-fw">
+                <a href="{% provider_login_url 'google'%}" class="google btn"><i class="fa fa-google fa-fw">
                 </i> Register with Google+
                 </a>
                 <a href="#" class="fb btn"><i class="fa fa-github fa-fw">
@@ -203,6 +209,6 @@
 
     </div>
 </div>
-
+{% endif %}
 </body>
 </html>

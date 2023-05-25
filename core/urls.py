@@ -4,7 +4,7 @@ from django.contrib import admin
 from django.urls import path, include, re_path
 from .schema import swagger_urlpatterns
 from django.conf import settings
-
+from django.contrib.auth.views import LogoutView
 # model translation
 # from django.urls.exceptions import Resolver404
 # from django.utils import translation
@@ -39,6 +39,7 @@ from django.conf import settings
 #apps
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path('logout/', LogoutView.as_view(), name='logout'),
     path("api-auth/", include("rest_framework.urls")),
     path("authentication/", include("apps.authentication.urls")),
     path("befit/", include("apps.befit.urls")),
@@ -75,3 +76,10 @@ if 'debug_toolbar' in settings.INSTALLED_APPS:
     urlpatterns += [
         path('__debug__/', include('debug_toolbar.urls')),
     ]
+
+# dajngo allauth url
+urlpatterns += [
+    path('accounts/', include('allauth.urls')),
+
+
+]

@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 import os
 from pathlib import Path
 from django.utils.translation import gettext_lazy as _
-
+from apps.socialauth.allauth.allauth_config import *
 import environ
 
 env = environ.Env()
@@ -43,6 +43,7 @@ DJANGO_APPS = [
     'rosetta',
     'modeltranslation',
     "django.contrib.admin",
+    'django.contrib.sites',
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
@@ -86,6 +87,8 @@ REST_FRAMEWORK = {
 
         'rest_framework.authentication.BasicAuthentication',
         "rest_framework.authentication.SessionAuthentication",
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+
 
     ),
     "DEFAULT_FILTER_BACKENDS": (
@@ -103,8 +106,6 @@ REST_FRAMEWORK = {
         'user': '1000/day'
     }
 }
-
-INSTALLED_APPS = DJANGO_APPS + CUSTOM_APPS + THIRD_PARTY_APPS
 
 MIDDLEWARE = [
     # debugging
@@ -140,6 +141,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                'django.template.context_processors.request',
             ],
         },
     },
@@ -246,12 +248,12 @@ LOCALE_PATHS = [
 MODELTRANSLATION_DEFAULT_LANGUAGE = 'en'
 MODELTRANSLATION_LANGUAGES = ('en', 'uz', 'ru')
 
-# login redirect url
-LOGIN_REDIRECT_URL = 'http://127.0.0.1:8000/en/swagger/'
-
 # debugging
 INTERNAL_IPS = [
     # ...
     "127.0.0.1",
     # ...
 ]
+
+# all apps
+INSTALLED_APPS = DJANGO_APPS + CUSTOM_APPS + THIRD_PARTY_APPS + ALL_AUTH_APPS
