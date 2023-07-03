@@ -54,6 +54,7 @@ urlpatterns = [
     path("twillo/", include("apps.twillo.urls")),
     path("beautifulSoup/", include("apps.BeautifulSoup.urls")),
     path("socialauth/", include("apps.socialauth.urls")),
+    path("smtp/", include("apps.SMTP.urls")),
 
 
 ]

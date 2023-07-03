@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="post" action=".">
+ {% csrf_token %}
+ <div class="mb-3">
+     <label for="exampleFormControlInput1" class="form-label">Receipt email address</label>
+     <input type="text" class="form-control" name="email" id="exampleFormControlInput1" placeholder="Receipt email address">
+   </div>
+   <div class="mb-3">
+     <label for="exampleInputSubject" class="form-label">Subject</label>
+     <input type="text" class="form-control" name="subject" id="exampleInputSubject">
+   </div>
+   <div class="mb-3">
+     <label for="exampleFormControlTextarea1" class="form-label">Message</label>
+     <textarea class="form-control" id="exampleFormControlTextarea1" name="message" rows="3"></textarea>
+   </div>
+   <button type="submit" class="btn btn-primary">Send</button>
+ </form>
+</body>
+</html>

@@ -66,6 +66,7 @@ CUSTOM_APPS = [
     'apps.twillo',
     'apps.BeautifulSoup',
     'apps.socialauth',
+    'apps.SMTP',
 
 ]
 
@@ -208,18 +209,20 @@ MEDIA_ROOT = BASE_DIR / "media"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
+SESSION_CACHE_ALIAS = 'default'
 # CACHES
-# CACHES = {
-#     "default": {
-#         "BACKEND": "django.core.cache.backends.redis.RedisCache",
-#         "LOCATION": f"{env.str('REDIS_URL', 'redis://localhost:6379/0')}",
-#         "KEY_PREFIX": "boilerplate",  # todo: you must change this with your project name or something else
-#     }
-# }
+CACHES = {
+    "default": {
+         "BACKEND": "django.core.cache.backends.redis.RedisCache",
+        "LOCATION": f"{env.str('REDIS_URL', 'redis_app://localhost:6379/0')}",
+        "KEY_PREFIX": "boilerplate",  # todo: you must change this with your project name or something else
+    }
+}
 
 # CELERY CONFIGURATION
-# CELERY_BROKER_URL = env.str("CELERY_BROKER_URL", "redis://localhost:6379")
-# CELERY_RESULT_BACKEND = env.str("CELERY_BROKER_URL", "redis://localhost:6379")
+CELERY_BROKER_URL = env.str("CELERY_BROKER_URL", "redis_app://localhost:6379")
+CELERY_RESULT_BACKEND = env.str("CELERY_BROKER_URL", "redis_app://localhost:6379")
 
 CELERY_TIMEZONE = "Asia/Tashkent"
 
@@ -257,3 +260,5 @@ INTERNAL_IPS = [
 
 # all apps
 INSTALLED_APPS = DJANGO_APPS + CUSTOM_APPS + THIRD_PARTY_APPS + ALL_AUTH_APPS
+
+

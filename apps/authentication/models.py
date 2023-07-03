@@ -26,8 +26,8 @@ class CustomUser(AbstractUser):
     phone = PhoneNumberField(blank=True, null=True, unique=True)
     privaligies = models.CharField(max_length=150, choices=Choice.choices, default=Choice.customer)
 
-    USERNAME_FIELD = 'phone'
-    REQUIRED_FIELDS = ['username']
+    USERNAME_FIELD = 'username'
+    REQUIRED_FIELDS = ['email']
 
     class Meta:
         verbose_name_plural = 'CustomUser'
