@@ -55,6 +55,7 @@ urlpatterns = [
     path("beautifulSoup/", include("apps.BeautifulSoup.urls")),
     path("socialauth/", include("apps.socialauth.urls")),
     path("smtp/", include("apps.SMTP.urls")),
+    path("redis/", include("apps.redis_app.urls")),
 
 
 ]
