@@ -67,6 +67,9 @@ CUSTOM_APPS = [
     'apps.BeautifulSoup',
     'apps.socialauth',
     'apps.SMTP',
+    'apps.redis_app',
+    'apps.celery_app',
+    'apps.ckeditor_app',
 
 ]
 
@@ -80,6 +83,9 @@ THIRD_PARTY_APPS = [
     'django_filters',
     "auditlog",
     "debug_toolbar",
+    'ckeditor',
+    'ckeditor_uploader',
+
 
 ]
 
@@ -262,3 +268,5 @@ INTERNAL_IPS = [
 INSTALLED_APPS = DJANGO_APPS + CUSTOM_APPS + THIRD_PARTY_APPS + ALL_AUTH_APPS
 
 
+CKEDITOR_UPLOAD_PATH = "uploads/"
+CKEDITOR_IMAGE_BACKEND = "pillow"
