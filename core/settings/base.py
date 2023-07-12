@@ -70,6 +70,8 @@ CUSTOM_APPS = [
     'apps.redis_app',
     'apps.celery_app',
     'apps.ckeditor_app',
+    'apps.Fakeuser',
+    'apps.CustomSerializers',
 
 ]
 
@@ -85,6 +87,8 @@ THIRD_PARTY_APPS = [
     "debug_toolbar",
     'ckeditor',
     'ckeditor_uploader',
+    'django_celery_results',
+    'django_celery_beat',
 
 
 ]

@@ -58,6 +58,7 @@ urlpatterns = [
     path("redis_app/", include("apps.redis_app.urls")),
     path("celery_app/", include("apps.celery_app.urls")),
     path("ckeditor_app/", include("apps.ckeditor_app.urls")),
+    path("customserializers/", include("apps.CustomSerializers.urls")),
 
 
 ]
