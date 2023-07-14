@@ -1,0 +1,44 @@
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+repos:
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v3.2.0
+    hooks:
+    -   id: trailing-whitespace
+    -   id: end-of-file-fixer
+    -   id: check-yaml
+    -   id: check-added-large-files
+-repos:
+- repo: https://github.com/pre-commit/mirrors-black
+  rev: v21.10b0
+  hooks:
+  - id: black
+    language_version: python3.9
+
+- repo: https://github.com/pre-commit/mirrors-flake8
+  rev: v4.0.1
+  hooks:
+  - id: flake8
+    language_version: python3.9
+
+- repo: https://github.com/pre-commit/mirrors-isort
+  rev: v5.11.2
+  hooks:
+  - id: isort
+    language_version: python3.9
+
+- repo: local
+  hooks:
+  - id: django-migrations
+    name: Django Migrations
+    entry: python manage.py makemigrations --check --dry-run
+    language: system
+    pass_filenames: false
+
+  - id: django-migrate
+    name: Django Migrate
+    entry: python manage.py migrate --check --dry-run
+    language: system
+    pass_filenames: false
+
+  # Add more Django-specific hooks as needed

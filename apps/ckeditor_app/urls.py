@@ -7,6 +7,3 @@ urlpatterns = [
     path('upload/', FileUploadAPIView.as_view(), name='file-upload'),
     path('',CkeditorList.as_view(),name='ckeditor')
 ]
-
-
-

@@ -93,5 +93,3 @@ class LoginUser(APIView):
             session.delete()
             response = Response(status=status.HTTP_201_CREATED)
             return response
-
-
