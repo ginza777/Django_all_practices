@@ -76,15 +76,25 @@ SOCIALACCOUNT_PROVIDERS = {
     },
     'github': {
         'APP': {
-            'client_id': 'fbea6fecea14aab397d6',
-            'secret': '3c15ee241e27fb50c08b4dcd856b01548736ff30',
+            'client_id': '151e0179dae600e45341',
+            'secret': '770335cff69bbb45efd52f7bf483e849cc59ce88',
             'key': ''
         },
-        'SCOPE': [
-            'user',
-            'repo',
-            'read:org',
-        ],
+
+    },
+    "apple": {
+        "APP": {
+            # Your service identifier.
+            'client_id': "com.<your domain>.social-login-1234",
+
+            # The Key ID (visible in the "View Key Details" page).
+            "secret": "sociallogintest1234",
+
+            "key": "ABCDEF",
+
+            "certificate_key": """----BEGIN PRIVATE KEY----
+            KJASDHKASDHKASJHDASKJHDKJASHDHJA----END PRIVATE KEY----"""
+        }
     }
 }
 

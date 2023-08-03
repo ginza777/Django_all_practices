@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    {% load static %}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<h2>Login Form</h2>
+
+
+<form method="post" action=".">
+    {% csrf_token %}
+
+
+    <div class="imgcontainer">
+        <img src="https://www.w3schools.com/howto/img_avatar2.png" alt="Avatar" class="avatar">
+    </div>
+
+    <div class="container">
+        <label for="name"><b>Username</b></label>
+        <input id="name" type="text" placeholder="Enter Username" name="name" required>
+
+        <label for="secret_word"><b>Secret_word</b></label>
+        <input id="secret_word" type="text" placeholder="secret_word" name="secret_word" required>
+
+        <label for="password"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="password" id="password" required>
+
+        {{ form.captcha }}
+        {% for error in form.captcha.errors %}
+            <p>{{ error }}</p>
+        {% endfor %}
+    {% if messages %}
+        {% for message in messages %}
+            <p style="color: red"> {{ message }}</p>
+        {% endfor %}
+
+    {% endif %}
+        <input type="submit" value="Submit">
+        <label>
+            <input type="checkbox" checked="checked" name="remember"> Remember me
+        </label>
+    </div>
+
+    <div class="container" style="background-color:#f1f1f1">
+        <button type="submit" class="cancelbtn">Cancel</button>
+        <span class="psw">Forgot <a href="#">password?</a></span>
+    </div>
+</form>
+
+</body>
+</html>

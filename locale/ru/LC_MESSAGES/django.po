@@ -59,7 +59,7 @@ msgstr "Русский"
 
 #: .\venv\Lib\site-packages\captcha\fields.py:20
 #: .\venv\Lib\site-packages\captcha\fields.py:21
-msgid "Error verifying reCAPTCHA, please try again."
+msgid "Error verifying , please try again."
 msgstr ""
 
 #: .\venv\Lib\site-packages\django\contrib\messages\apps.py:15

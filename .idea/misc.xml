@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.10 (django)" project-jdk-type="Python SDK" />
+  <component name="com.github.texhnolyzze.jiraworklogplugin.JiraWorklogPluginState">
+    <option name="lastBranch" value="master" />
+    <option name="timers" value="{&quot;master&quot;:{&quot;total&quot;:8375211796134,&quot;updatedAtSinceEpoch&quot;:1691074224.874196047,&quot;paused&quot;:false}}" />
+    <option name="timeSeries" value="[{&quot;branch&quot;:&quot;master&quot;,&quot;started&quot;:1689665573.789978995,&quot;duration&quot;:805.033357590},{&quot;branch&quot;:&quot;master&quot;,&quot;started&quot;:1690792451.328460127,&quot;duration&quot;:2955.062698479},{&quot;branch&quot;:&quot;master&quot;,&quot;started&quot;:1691069324.753141544,&quot;duration&quot;:90.023839834}]" />
+  </component>
+</project>

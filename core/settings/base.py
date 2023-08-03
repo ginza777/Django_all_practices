@@ -73,6 +73,8 @@ CUSTOM_APPS = [
     'apps.Fakeuser',
     'apps.CustomSerializers',
     'apps.JsonLoads',
+    'apps.users',
+    'apps.annotate',
 
 ]
 

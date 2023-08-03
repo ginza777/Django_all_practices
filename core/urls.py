@@ -35,10 +35,14 @@ from django.contrib.auth.views import LogoutView
 #     else:
 #         response = HttpResponseRedirect("/")
 #     return response
+from apps.annotate.views import Home
+
 
 #apps
 urlpatterns = [
+    path('', Home, name='home'),
     path("admin/", admin.site.urls),
+    path('accounts/', include('allauth.urls')),
     path('logout/', LogoutView.as_view(), name='logout'),
     path("api-auth/", include("rest_framework.urls")),
     path("authentication/", include("apps.authentication.urls")),
@@ -60,6 +64,8 @@ urlpatterns = [
     path("ckeditor_app/", include("apps.ckeditor_app.urls")),
     path("fakeuser/", include("apps.Fakeuser.urls")),
     path("customserializers/", include("apps.CustomSerializers.urls")),
+    path('authusers/', include('apps.users.urls')),
+
 
 
 ]
